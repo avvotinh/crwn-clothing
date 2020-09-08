@@ -50,8 +50,10 @@ class SignIn extends React.Component<any, any> {
           />
 
           <div className="buttons">
-            <Button type="submit">Sign In</Button>
-            <Button onClick={signInWithGoogle} light>
+            <Button type="submit" mode="dark">
+              Sign In
+            </Button>
+            <Button onClick={signInWithGoogle} mode="light">
               Sign in with Google
             </Button>
           </div>

@@ -3,7 +3,7 @@ import "./button.scss";
 
 interface IOwnProps {
   type?: "button" | "submit" | "reset";
-  light?: boolean;
+  mode?: "dark" | "light";
   onClick?: (e: React.MouseEvent) => void;
 }
 
@@ -13,11 +13,11 @@ class Button extends React.Component<IOwnProps> {
   }
 
   render() {
-    const { children, onClick, type, light } = this.props;
+    const { children, onClick, type, mode } = this.props;
 
     return (
       <button
-        className={`${light ? "light" : ""} custom-button`}
+        className={`${mode === "light" ? "light" : ""} custom-button`}
         type={type}
         onClick={onClick}
       >
