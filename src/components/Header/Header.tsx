@@ -2,12 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import "./header.scss";
 import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import "./header.scss";
+import CartIcon from "../CartIcon/CartIcon";
+import CartDropdown from "../CartDropdown/CartDropdown";
 
 interface iOwnProps {
   currentUser: any;
+  hidden: boolean;
 }
 
 class Header extends React.Component<iOwnProps> {
@@ -16,7 +19,7 @@ class Header extends React.Component<iOwnProps> {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, hidden } = this.props;
 
     return (
       <div className="header">
@@ -39,14 +42,20 @@ class Header extends React.Component<iOwnProps> {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
+        {hidden ? <CartDropdown /> : null}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: any) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({
+  user: { currentUser },
+  cart: { hidden },
+}: any) => ({
+  currentUser,
+  hidden,
 });
 
 export default connect(mapStateToProps)(Header);
