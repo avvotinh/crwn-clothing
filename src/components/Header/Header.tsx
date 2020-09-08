@@ -3,9 +3,20 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./header.scss";
+import { auth } from "../../firebase/firebase.utils";
 
-class Header extends React.Component {
+interface iOwnProps {
+  currentUser: any;
+}
+
+class Header extends React.Component<iOwnProps> {
+  constructor(props: iOwnProps) {
+    super(props);
+  }
+
   render() {
+    const { currentUser } = this.props;
+
     return (
       <div className="header">
         <Link className="logo-container" to="/">
@@ -18,6 +29,15 @@ class Header extends React.Component {
           <Link className="option" to="/shop">
             CONTACT
           </Link>
+          {currentUser ? (
+            <div className="option" onClick={() => auth.signOut()}>
+              SIGN OUT
+            </div>
+          ) : (
+            <Link className="option" to="/signin">
+              SIGN IN
+            </Link>
+          )}
         </div>
       </div>
     );

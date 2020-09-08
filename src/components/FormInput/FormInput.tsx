@@ -23,12 +23,13 @@ class FormInput extends React.Component<IFormInputProps> {
         <input
           className="form-input"
           onChange={handleChange}
+          autoComplete="off"
           {...otherProps}
         />
         {label ? (
           <label
             className={`${
-              otherProps.value.length ? "shink" : "form-input-label"
+              otherProps.value.length ? "shrink" : "form-input-label"
             }`}
           >
             {label}
