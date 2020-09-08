@@ -32,6 +32,8 @@ class App extends React.Component<any, any> {
             this.setState({
               currentUser: { id: snapshot.id, ...snapshot.data() },
             });
+
+            console.log(this.state);
           });
         }
 

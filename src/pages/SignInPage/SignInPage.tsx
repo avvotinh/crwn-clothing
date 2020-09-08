@@ -1,6 +1,7 @@
 import React from "react";
 import "./signInPage.scss";
 import SignIn from "../../components/SignIn/SignIn";
+import SignUp from "../../components/SignUp/SignUp";
 
 class SignInPage extends React.Component<any, any> {
   constructor(props: any) {
@@ -9,8 +10,9 @@ class SignInPage extends React.Component<any, any> {
 
   render() {
     return (
-      <div>
+      <div className="sign-in-and-sign-up">
         <SignIn />
+        <SignUp />
       </div>
     );
   }
