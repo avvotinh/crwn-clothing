@@ -23,12 +23,7 @@ class PreviewCollection extends React.Component<
           {this.props.items
             .filter((item, index) => index < 4)
             .map((item) => (
-              <CollectionItem
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                imageUrl={item.imageUrl}
-              />
+              <CollectionItem key={item.id} item={item} />
             ))}
         </div>
       </div>

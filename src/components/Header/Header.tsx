@@ -44,7 +44,7 @@ class Header extends React.Component<iOwnProps> {
           )}
           <CartIcon />
         </div>
-        {hidden ? <CartDropdown /> : null}
+        {hidden ? null : <CartDropdown />}
       </div>
     );
   }
