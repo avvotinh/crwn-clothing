@@ -8,7 +8,9 @@ interface IPreviewCollectionProps {
   items: any[];
 }
 
-class PreviewCollection extends React.Component<IPreviewCollectionProps> {
+class PreviewCollection extends React.Component<
+  IPreviewCollectionProps
+> {
   constructor(props: IPreviewCollectionProps) {
     super(props);
   }
@@ -21,7 +23,12 @@ class PreviewCollection extends React.Component<IPreviewCollectionProps> {
           {this.props.items
             .filter((item, index) => index < 4)
             .map((item) => (
-              <CollectionItem name={item.name} price={item.price} imageUrl={item.imageUrl} />
+              <CollectionItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                imageUrl={item.imageUrl}
+              />
             ))}
         </div>
       </div>

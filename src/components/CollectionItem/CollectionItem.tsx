@@ -1,7 +1,9 @@
 import React from "react";
 import "./collectionItem.scss";
+import Button from "../Button/Button";
 
 interface ICollectionItemProps {
+  key: number;
   name: string;
   price: number;
   imageUrl: string;
@@ -17,11 +19,17 @@ class CollectionItem extends React.Component<ICollectionItemProps> {
 
     return (
       <div className="collection-item">
-        <div className="image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
+        <div
+          className="image"
+          style={{ backgroundImage: `url(${imageUrl})` }}
+        ></div>
         <div className="collection-footer">
           <span className="name">{name}</span>
           <span className="price">{price}</span>
         </div>
+        <Button mode="dark" type="button" inverted>
+          Add to cart
+        </Button>
       </div>
     );
   }
