@@ -1,30 +1,41 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./cartDropdown.scss";
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";
+import { selectCartItems } from "../../redux/cart/cartSelector";
+import { toggleCartHidden } from "../../redux/cart/cartActions";
+import { CartActionTypes } from "../../redux/cart/cartTypes";
 
-class CartDropdown extends React.Component<any> {
-  render() {
-    const { cartItems } = this.props;
+const CartDropdown = () => {
+  const cartItems = useSelector(selectCartItems);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const toggleCartHiddenHandler = useCallback(
+    () => dispatch({ type: CartActionTypes.TOGGLE_CART_HIDDEN }),
+    [dispatch]
+  );
 
-    return (
-      <div className="cart-dropdown">
-        <div className="cart-items">
-          {cartItems.map((item: any) => (
-            <CartItem key={item.id} item={item} />
-          ))}
-        </div>
-        <Button type="button" mode="dark">
-          GO TO CHECKOUT
-        </Button>
+  const goToCheckout = () => {
+    history.push("/checkout");
+    toggleCartHiddenHandler();
+  };
+
+  return (
+    <div className="cart-dropdown">
+      <div className="cart-items">
+        {cartItems.length ? (
+          cartItems.map((item: any) => <CartItem key={item.id} item={item} />)
+        ) : (
+          <span className="empty-message">Your cart is empty</span>
+        )}
       </div>
-    );
-  }
-}
+      <Button type="button" mode="dark" onClick={goToCheckout}>
+        GO TO CHECKOUT
+      </Button>
+    </div>
+  );
+};
 
-const mapStateToProps = ({ cart: { cartItems } }: any) => ({
-  cartItems,
-});
-
-export default connect(mapStateToProps)(CartDropdown);
+export default CartDropdown;

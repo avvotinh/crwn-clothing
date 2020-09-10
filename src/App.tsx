@@ -14,6 +14,7 @@ import Header from "./components/Header/Header";
 import SignInPage from "./pages/SignInPage/SignInPage";
 
 import "./App.scss";
+import CheckoutPage from "./pages/Checkout/Checkout";
 
 class App extends React.Component<any, any> {
   private unsubscribeFromAuth: any;
@@ -50,6 +51,7 @@ class App extends React.Component<any, any> {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route path="/checkout" component={CheckoutPage} />
           <Route
             path="/signin"
             render={() =>

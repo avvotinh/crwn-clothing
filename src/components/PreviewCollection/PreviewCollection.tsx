@@ -8,9 +8,7 @@ interface IPreviewCollectionProps {
   items: any[];
 }
 
-class PreviewCollection extends React.Component<
-  IPreviewCollectionProps
-> {
+class PreviewCollection extends React.Component<IPreviewCollectionProps> {
   constructor(props: IPreviewCollectionProps) {
     super(props);
   }

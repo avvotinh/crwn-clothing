@@ -10,4 +10,7 @@ const store = createStore(
   applyMiddleware(...middlewares)
 );
 
+export const dispatch = store.dispatch;
+export const getState = store.getState;
+
 export default store;

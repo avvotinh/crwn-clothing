@@ -18,9 +18,7 @@ class Button extends React.Component<IOwnProps> {
 
     return (
       <button
-        className={`${inverted ? "inverted" : ""} ${
-          mode === "light" ? "light" : ""
-        } custom-button`}
+        className={`${inverted ? "inverted" : ""} ${mode === "light" ? "light" : ""} custom-button`}
         type={type}
         onClick={onClick}
       >
