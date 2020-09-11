@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import "./header.scss";
@@ -8,54 +8,36 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropdown from "../CartDropdown/CartDropdown";
 
-interface iOwnProps {
-  currentUser: any;
-  hidden: boolean;
-}
+const Header = () => {
+  const currentUser = useSelector((state: any) => state.user.currentUser);
+  const hidden = useSelector((state: any) => state.cart.hidden);
 
-class Header extends React.Component<iOwnProps> {
-  constructor(props: iOwnProps) {
-    super(props);
-  }
-
-  render() {
-    const { currentUser, hidden } = this.props;
-
-    return (
-      <div className="header">
-        <Link className="logo-container" to="/">
-          <Logo className="logo" />
+  return (
+    <div className="header">
+      <Link className="logo-container" to="/">
+        <Logo className="logo" />
+      </Link>
+      <div className="options">
+        <Link className="option" to="/shop">
+          SHOP
         </Link>
-        <div className="options">
-          <Link className="option" to="/shop">
-            SHOP
+        <Link className="option" to="/shop">
+          CONTACT
+        </Link>
+        {currentUser ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to="/signin">
+            SIGN IN
           </Link>
-          <Link className="option" to="/shop">
-            CONTACT
-          </Link>
-          {currentUser ? (
-            <div className="option" onClick={() => auth.signOut()}>
-              SIGN OUT
-            </div>
-          ) : (
-            <Link className="option" to="/signin">
-              SIGN IN
-            </Link>
-          )}
-          <CartIcon />
-        </div>
-        {hidden ? null : <CartDropdown />}
+        )}
+        <CartIcon />
       </div>
-    );
-  }
-}
+      {hidden ? null : <CartDropdown />}
+    </div>
+  );
+};
 
-const mapStateToProps = ({
-  user: { currentUser },
-  cart: { hidden },
-}: any) => ({
-  currentUser,
-  hidden,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;
