@@ -10,25 +10,19 @@ interface IFormInputProps {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-class FormInput extends React.Component<IFormInputProps> {
-  constructor(props: IFormInputProps) {
-    super(props);
-  }
+const FormInput = (props: IFormInputProps) => {
+  const { handleChange, label, ...otherProps } = props;
 
-  render() {
-    const { handleChange, label, ...otherProps } = this.props;
-
-    return (
-      <div className="group">
-        <input className="form-input" onChange={handleChange} autoComplete="off" {...otherProps} />
-        {label ? (
-          <label className={`${otherProps.value.length ? "shrink" : "form-input-label"}`}>
-            {label}
-          </label>
-        ) : null}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="group">
+      <input className="form-input" onChange={handleChange} autoComplete="off" {...otherProps} />
+      {label ? (
+        <label className={`${otherProps.value.length ? "shrink" : "form-input-label"}`}>
+          {label}
+        </label>
+      ) : null}
+    </div>
+  );
+};
 
 export default FormInput;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, DefaultRootState } from "react-redux";
+import { useSelector } from "react-redux";
 import MenuItem from "../MenuItem/MenuItem";
 import "./directory.scss";
 import { selectDirectorySections } from "../../redux/directory/directorySelector";

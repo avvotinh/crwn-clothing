@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { clearItemFromCart } from "../../redux/cart/cartActions";
 import "./checkoutItem.scss";
 import { CartActionTypes } from "../../redux/cart/cartTypes";
 

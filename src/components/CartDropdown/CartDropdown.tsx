@@ -5,7 +5,6 @@ import "./cartDropdown.scss";
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";
 import { selectCartItems } from "../../redux/cart/cartSelector";
-import { toggleCartHidden } from "../../redux/cart/cartActions";
 import { CartActionTypes } from "../../redux/cart/cartTypes";
 
 const CartDropdown = () => {
