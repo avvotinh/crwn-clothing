@@ -1,9 +1,5 @@
 import { createSelector } from "reselect";
 
-interface IIndexable {
-  [key: string]: number;
-}
-
 const selectShop = (state: any) => state.shop;
 
 export const selectCollections = createSelector([selectShop], (directory) => directory.collections);
